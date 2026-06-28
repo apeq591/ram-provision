@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Ram Provision logo">
+  <defs>
+    <linearGradient id="rpFlame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF8F00"/>
+      <stop offset="0.55" stop-color="#F4511E"/>
+      <stop offset="1" stop-color="#C62828"/>
+    </linearGradient>
+    <radialGradient id="rpGlow" cx="0.5" cy="0.42" r="0.65">
+      <stop offset="0" stop-color="#FFF3E0"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </radialGradient>
+  </defs>
+
+  <!-- outer badge ring -->
+  <circle cx="100" cy="100" r="94" fill="url(#rpFlame)"/>
+  <circle cx="100" cy="100" r="80" fill="url(#rpGlow)"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#C62828" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- wheat sheaf -->
+  <g stroke="#C62828" stroke-width="3.2" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M100 150 C100 140 100 120 100 108"/>
+    <path d="M100 132 C92 128 86 122 84 114"/>
+    <path d="M100 132 C108 128 114 122 116 114"/>
+    <path d="M100 120 C93 116 88 110 87 103"/>
+    <path d="M100 120 C107 116 112 110 113 103"/>
+  </g>
+  <g fill="#F4511E">
+    <ellipse cx="84" cy="111" rx="4.4" ry="8" transform="rotate(-28 84 111)"/>
+    <ellipse cx="116" cy="111" rx="4.4" ry="8" transform="rotate(28 116 111)"/>
+    <ellipse cx="87" cy="100" rx="4.2" ry="7.5" transform="rotate(-28 87 100)"/>
+    <ellipse cx="113" cy="100" rx="4.2" ry="7.5" transform="rotate(28 113 100)"/>
+    <ellipse cx="100" cy="95" rx="4.6" ry="9"/>
+  </g>
+
+  <!-- devanagari mark -->
+  <text x="100" y="86" text-anchor="middle" font-family="'Tiro Devanagari Marathi','Mukta',serif" font-size="56" font-weight="700" fill="#C62828">राम</text>
+</svg>
