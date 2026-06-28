@@ -1,0 +1,201 @@
+/* Ram Provision — shared language toggle + basket/checkout (demo, no payments) */
+(function(){
+  "use strict";
+
+  var WA = "917507112727";            // WhatsApp (primary)
+  var LANG_KEY = "rp_lang";
+  var CART_KEY = "rp_cart";
+
+  /* ---------------- language ---------------- */
+  function getLang(){ return localStorage.getItem(LANG_KEY) || "mr"; }
+  function setLang(l){ localStorage.setItem(LANG_KEY, l); applyLang(l); }
+  window.rpSetLang = setLang;
+  window.rpToggleLang = function(){ setLang(getLang()==="mr" ? "en" : "mr"); };
+
+  function applyLang(l){
+    var en = (l === "en");
+    document.querySelectorAll("[data-mr]").forEach(function(el){
+      var v = en ? el.getAttribute("data-en") : el.getAttribute("data-mr");
+      if (v !== null) el.innerHTML = v;
+    });
+    document.body.classList.toggle("lang-en", en);
+    document.documentElement.lang = en ? "en" : "mr";
+    document.querySelectorAll(".lang-btn").forEach(function(b){
+      b.textContent = en ? "मराठी" : "English";
+    });
+    renderCart();
+  }
+
+  /* ---------------- cart ---------------- */
+  function getCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ return []; } }
+  function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); updateCount(); renderCart(); }
+  function count(){ return getCart().reduce(function(s,i){ return s + i.qty; }, 0); }
+
+  function addItem(key, mr, en){
+    var c = getCart(), f = c.filter(function(i){ return i.key===key; })[0];
+    if (f) f.qty++; else c.push({ key:key, mr:mr, en:en, qty:1 });
+    saveCart(c); openCart();
+  }
+  function changeQty(key, d){
+    var c = getCart(), f = c.filter(function(i){ return i.key===key; })[0];
+    if (!f) return;
+    f.qty += d;
+    if (f.qty <= 0) c = c.filter(function(i){ return i.key!==key; });
+    saveCart(c);
+  }
+  function clearCart(){ saveCart([]); }
+
+  function updateCount(){
+    var n = count();
+    document.querySelectorAll(".cart-count").forEach(function(b){
+      b.textContent = n; b.style.display = n ? "grid" : "none";
+    });
+  }
+
+  function openCart(){ var d = document.getElementById("rp-drawer"); if (d){ d.classList.add("open"); document.getElementById("rp-scrim").classList.add("open"); } }
+  function closeCart(){ var d = document.getElementById("rp-drawer"); if (d){ d.classList.remove("open"); document.getElementById("rp-scrim").classList.remove("open"); resetCheckout(); } }
+  window.rpOpenCart = openCart;
+
+  function t(mr,en){ return getLang()==="en" ? en : mr; }
+
+  function renderCart(){
+    var body = document.getElementById("rp-items");
+    if (!body) return;
+    var c = getCart();
+    if (!c.length){
+      body.innerHTML = '<p class="rp-empty">' + t("तुमची बास्केट रिकामी आहे.","Your basket is empty.") +
+        '<br><span>' + t("वस्तू जोडण्यासाठी यादी पाहा.","Add items from the catalogue.") + '</span></p>';
+      var f = document.getElementById("rp-foot"); if (f) f.style.display = "none";
+      return;
+    }
+    document.getElementById("rp-foot").style.display = "block";
+    var html = "";
+    c.forEach(function(i){
+      html += '<div class="rp-row">' +
+        '<div class="rp-nm">' + t(i.mr, i.en) + '</div>' +
+        '<div class="rp-qty">' +
+          '<button aria-label="less" onclick="rpQty(\'' + esc(i.key) + '\',-1)">−</button>' +
+          '<span>' + i.qty + '</span>' +
+          '<button aria-label="more" onclick="rpQty(\'' + esc(i.key) + '\',1)">+</button>' +
+        '</div></div>';
+    });
+    body.innerHTML = html;
+  }
+  function esc(s){ return String(s).replace(/'/g,"\\'"); }
+  window.rpQty = changeQty;
+
+  /* ---------------- checkout ---------------- */
+  function resetCheckout(){
+    var co = document.getElementById("rp-checkout");
+    if (co) co.classList.remove("done");
+  }
+  function waOrder(){
+    var c = getCart(); if (!c.length) return;
+    var name = (document.getElementById("rp-name")||{}).value || "";
+    var lines = c.map(function(i){ return "• " + t(i.mr,i.en) + " × " + i.qty; }).join("%0A");
+    var msg = t("नमस्कार राम प्रोव्हिजन, मला खालील वस्तू हव्या आहेत:",
+                "Hello Ram Provision, I would like to order:") +
+              "%0A%0A" + lines +
+              (name ? ("%0A%0A" + t("नाव","Name") + ": " + encodeURIComponent(name)) : "");
+    window.open("https://wa.me/" + WA + "?text=" + msg, "_blank");
+  }
+  window.rpWaOrder = waOrder;
+  window.rpDemoOrder = function(){
+    if (!getCart().length) return;
+    var co = document.getElementById("rp-checkout");
+    co.classList.add("done");
+    clearCart();
+  };
+
+  /* ---------------- inject UI ---------------- */
+  function inject(){
+    var css = document.createElement("style");
+    css.textContent = [
+      "body.lang-en .mr{font-family:'Fraunces',Georgia,serif}",
+      "body.lang-en .only-mr{display:none!important}",
+      "body:not(.lang-en) .only-en{display:none!important}",
+      "#rp-fab{position:fixed;right:18px;bottom:18px;z-index:90;width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#FF8F00,#F4511E 55%,#C62828);color:#fff;font-size:1.6rem;box-shadow:0 14px 32px -10px rgba(150,40,20,.65);display:grid;place-items:center;transition:transform .18s}",
+      "#rp-fab:hover{transform:translateY(-3px) scale(1.04)}",
+      ".cart-count{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 5px;border-radius:999px;background:#1c110c;color:#fff;font-size:.72rem;font-weight:700;display:none;place-items:center;border:2px solid #fff}",
+      "#rp-scrim{position:fixed;inset:0;background:rgba(28,17,12,.5);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s;z-index:95}",
+      "#rp-scrim.open{opacity:1;pointer-events:auto}",
+      "#rp-drawer{position:fixed;top:0;right:0;height:100%;width:min(390px,92vw);background:#FFF8F0;z-index:100;transform:translateX(102%);transition:transform .3s ease;display:flex;flex-direction:column;box-shadow:-20px 0 50px -20px rgba(120,30,10,.5)}",
+      "#rp-drawer.open{transform:none}",
+      "#rp-dh{background:linear-gradient(135deg,#FF8F00,#F4511E 55%,#C62828);color:#fff;padding:1.1rem 1.2rem;display:flex;align-items:center;justify-content:space-between}",
+      "#rp-dh h3{font-family:'Tiro Devanagari Marathi','Mukta',serif;font-size:1.3rem;margin:0}",
+      "#rp-dh button{background:rgba(255,255,255,.2);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:1.2rem;cursor:pointer}",
+      "#rp-items{flex:1;overflow-y:auto;padding:1rem 1.2rem}",
+      ".rp-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.7rem 0;border-bottom:1px dashed rgba(198,40,40,.18)}",
+      ".rp-nm{font-family:'Tiro Devanagari Marathi','Mukta',serif;font-size:1.05rem;color:#2B1B16}",
+      "body.lang-en .rp-nm{font-family:'Mukta',sans-serif}",
+      ".rp-qty{display:flex;align-items:center;gap:.55rem;flex:0 0 auto}",
+      ".rp-qty button{width:30px;height:30px;border-radius:50%;border:1.5px solid #F57C00;background:#fff;color:#C62828;font-size:1.1rem;font-weight:700;cursor:pointer;line-height:1}",
+      ".rp-qty span{min-width:18px;text-align:center;font-weight:600}",
+      ".rp-empty{text-align:center;color:#7A5C4E;margin-top:2rem}.rp-empty span{font-size:.85rem}",
+      "#rp-foot{padding:1rem 1.2rem;border-top:1px solid rgba(198,40,40,.15);background:#FBEBD8}",
+      "#rp-name{width:100%;padding:.7rem .9rem;border:1.5px solid rgba(198,40,40,.25);border-radius:12px;font:inherit;margin-bottom:.7rem;background:#fff}",
+      ".rp-cta{display:flex;flex-direction:column;gap:.55rem}",
+      ".rp-cta button{padding:.8rem 1rem;border-radius:999px;border:none;font:inherit;font-weight:600;cursor:pointer}",
+      ".rp-wa{background:#1faf54;color:#fff}",
+      ".rp-demo{background:linear-gradient(135deg,#FF8F00,#F4511E 55%,#C62828);color:#fff}",
+      "#rp-checkout.done #rp-foot,#rp-checkout.done #rp-items{display:none}",
+      "#rp-thanks{display:none;padding:2.2rem 1.4rem;text-align:center}",
+      "#rp-checkout.done #rp-thanks{display:block}",
+      "#rp-thanks .big{font-size:2.6rem}",
+      "#rp-thanks h4{font-family:'Tiro Devanagari Marathi','Mukta',serif;color:#C62828;font-size:1.5rem;margin:.6rem 0 .3rem}",
+      "#rp-thanks p{color:#7A5C4E;font-size:.92rem}"
+    ].join("\n");
+    document.head.appendChild(css);
+
+    var fab = document.createElement("button");
+    fab.id = "rp-fab"; fab.setAttribute("aria-label","Basket");
+    fab.innerHTML = '🛒<span class="cart-count">0</span>';
+    fab.onclick = openCart;
+
+    var scrim = document.createElement("div");
+    scrim.id = "rp-scrim"; scrim.onclick = closeCart;
+
+    var drawer = document.createElement("div");
+    drawer.id = "rp-drawer";
+    drawer.innerHTML =
+      '<div id="rp-checkout">' +
+        '<div id="rp-dh"><h3 data-mr="तुमची बास्केट" data-en="Your Basket"></h3>' +
+          '<button aria-label="close" onclick="rpCloseCart()">×</button></div>' +
+        '<div id="rp-items"></div>' +
+        '<div id="rp-foot">' +
+          '<input id="rp-name" placeholder="" data-mr="तुमचे नाव (ऐच्छिक)" data-en="Your name (optional)">' +
+          '<div class="rp-cta">' +
+            '<button class="rp-wa" onclick="rpWaOrder()" data-mr="💬 WhatsApp वर ऑर्डर पाठवा" data-en="💬 Send order on WhatsApp"></button>' +
+            '<button class="rp-demo" onclick="rpDemoOrder()" data-mr="✅ ऑर्डर करा (डेमो)" data-en="✅ Place order (demo)"></button>' +
+          '</div>' +
+        '</div>' +
+        '<div id="rp-thanks">' +
+          '<div class="big">🎉</div>' +
+          '<h4 data-mr="ऑर्डरबद्दल धन्यवाद!" data-en="Thank you for your order!"></h4>' +
+          '<p data-mr="ही डेमो ऑर्डर आहे — पैसे आकारले जात नाहीत. दुकान लवकरच संपर्क करेल." data-en="This is a demo order — no payment taken. The shop will be in touch."></p>' +
+          '<p style="margin-top:.8rem"><button class="rp-demo" style="display:inline-block;padding:.6rem 1.4rem;border-radius:999px" onclick="rpCloseCart()" data-mr="ठीक आहे" data-en="Done"></button></p>' +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(fab);
+    document.body.appendChild(scrim);
+    document.body.appendChild(drawer);
+    window.rpCloseCart = closeCart;
+  }
+
+  /* wire "add" buttons present in the page */
+  function wireAdds(){
+    document.querySelectorAll(".add").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        addItem(btn.getAttribute("data-key"), btn.getAttribute("data-name-mr"), btn.getAttribute("data-name-en"));
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    inject();
+    wireAdds();
+    applyLang(getLang());
+    updateCount();
+  });
+})();
