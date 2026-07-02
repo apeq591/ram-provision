@@ -149,7 +149,7 @@
 
     var fab = document.createElement("button");
     fab.id = "rp-fab"; fab.setAttribute("aria-label","Basket");
-    fab.innerHTML = '🛒<span class="cart-count">0</span>';
+    fab.innerHTML = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 10.5a2 2 0 0 1-2 1.5H8.2a2 2 0 0 1-2-1.5z"/><path d="M9 8l3-4 3 4"/><path d="M9.5 12v3M14.5 12v3"/></svg><span class="cart-count">0</span>';
     fab.onclick = openCart;
 
     var scrim = document.createElement("div");
@@ -165,12 +165,12 @@
         '<div id="rp-foot">' +
           '<input id="rp-name" placeholder="" data-mr="तुमचे नाव (ऐच्छिक)" data-en="Your name (optional)">' +
           '<div class="rp-cta">' +
-            '<button class="rp-wa" onclick="rpWaOrder()" data-mr="💬 WhatsApp वर ऑर्डर पाठवा" data-en="💬 Send order on WhatsApp"></button>' +
-            '<button class="rp-demo" onclick="rpDemoOrder()" data-mr="✅ ऑर्डर करा (डेमो)" data-en="✅ Place order (demo)"></button>' +
+            '<button class="rp-wa" onclick="rpWaOrder()" data-mr="WhatsApp वर ऑर्डर पाठवा" data-en="Send order on WhatsApp"></button>' +
+            '<button class="rp-demo" onclick="rpDemoOrder()" data-mr="ऑर्डर करा (डेमो)" data-en="Place order (demo)"></button>' +
           '</div>' +
         '</div>' +
         '<div id="rp-thanks">' +
-          '<div class="big">🎉</div>' +
+          '<div class="big"><svg viewBox="0 0 24 24" width="52" height="52" fill="none" stroke="#1faf54" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg></div>' +
           '<h4 data-mr="ऑर्डरबद्दल धन्यवाद!" data-en="Thank you for your order!"></h4>' +
           '<p data-mr="ही डेमो ऑर्डर आहे — पैसे आकारले जात नाहीत. दुकान लवकरच संपर्क करेल." data-en="This is a demo order — no payment taken. The shop will be in touch."></p>' +
           '<p style="margin-top:.8rem"><button class="rp-demo" style="display:inline-block;padding:.6rem 1.4rem;border-radius:999px" onclick="rpCloseCart()" data-mr="ठीक आहे" data-en="Done"></button></p>' +

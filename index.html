@@ -34,7 +34,7 @@ a{color:inherit;text-decoration:none}
 
 .lang-btn{background:transparent;border:1.5px solid var(--red);color:var(--red);border-radius:999px;padding:.4rem .9rem;font:inherit;font-weight:600;font-size:.85rem;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem}
 .lang-btn:hover{background:var(--cream-2)}
-.lang-btn::before{content:"🌐";font-size:.95rem}
+.lang-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.7}
 
 /* ---- top bar ---- */
 header{position:sticky;top:0;z-index:50;background:rgba(255,248,240,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(198,40,40,.12)}
@@ -69,7 +69,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,248,240,.85);backdro
 .pillars{margin-top:-2.6rem;position:relative;z-index:5}
 .pillars .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .pill{background:#fff;border-radius:var(--radius);padding:1.5rem 1.2rem;text-align:center;box-shadow:var(--shadow)}
-.pill .ic{font-size:2rem}
+.pill .ic{width:58px;height:58px;margin:0 auto .3rem;border-radius:50%;background:var(--cream-2);display:grid;place-items:center}
+.pill .ic svg,.cat .ic svg,.step .ic svg{width:28px;height:28px;stroke:var(--red);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .pill h3{font-family:'Tiro Devanagari Marathi',serif;color:var(--red);font-size:1.35rem;margin:.3rem 0 .1rem}
 .pill p{font-size:.9rem;color:var(--muted)}
 body.lang-en .pill h3{font-family:'Fraunces',serif}
@@ -91,11 +92,24 @@ body.lang-en .shead h2{font-family:'Fraunces',serif}
 .cat::after{content:"";position:absolute;inset:auto -30% -40% auto;width:120px;height:120px;border-radius:50%;background:var(--cream-2);opacity:.6;transition:transform .3s}
 .cat:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(245,124,0,.4)}
 .cat:hover::after{transform:scale(1.4)}
-.cat .ic{font-size:2.1rem;position:relative;z-index:2}
+.cat .ic{width:54px;height:54px;border-radius:50%;background:var(--cream-2);display:grid;place-items:center;position:relative;z-index:2}
 .cat h3{font-family:'Tiro Devanagari Marathi',serif;font-size:1.3rem;color:var(--red);margin:.6rem 0 .15rem;position:relative;z-index:2}
 .cat .en{font-size:.85rem;color:var(--muted);position:relative;z-index:2}
 body.lang-en .cat h3{font-family:'Fraunces',serif}
 .cats-cta{text-align:center;margin-top:2.4rem}
+
+/* ---- how ordering works ---- */
+.ordering{background:linear-gradient(180deg,#fff,var(--cream))}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.step{position:relative;background:#fff;border:1px solid rgba(198,40,40,.1);border-radius:18px;padding:1.7rem 1.4rem;text-align:center;box-shadow:0 12px 34px -22px rgba(150,40,20,.5)}
+.step .num{position:absolute;top:.7rem;right:1.1rem;font-family:'Fraunces',serif;font-weight:600;font-size:2.1rem;color:var(--cream-2);line-height:1}
+.step .ic{width:58px;height:58px;margin:0 auto .7rem;border-radius:50%;background:var(--cream-2);display:grid;place-items:center}
+.step h3{font-family:'Tiro Devanagari Marathi',serif;color:var(--red);font-size:1.25rem;margin-bottom:.35rem}
+body.lang-en .step h3{font-family:'Fraunces',serif}
+.step p{font-size:.9rem;color:var(--muted)}
+.svc-note{max-width:720px;margin:2rem auto 0;text-align:center;background:var(--cream-2);border:1px solid rgba(245,124,0,.35);border-radius:16px;padding:1.1rem 1.4rem;font-weight:600;color:var(--ink)}
+.svc-note .em{color:var(--red)}
 
 /* ---- story ---- */
 .story{background:linear-gradient(180deg,var(--cream),#fff)}
@@ -174,9 +188,9 @@ footer .fine{margin-top:.8rem;font-size:.78rem;opacity:.5}
     <div class="en">Ram Provision Stores</div>
     <div class="tagline mr" data-mr="विश्वासाची परंपरा<span class='small serif'>A tradition of trust</span>" data-en="A tradition of trust<span class='small serif'>विश्वासाची परंपरा</span>">विश्वासाची परंपरा<span class="small serif">A tradition of trust</span></div>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#categories" data-mr="🛒 आमच्या वस्तू पाहा" data-en="🛒 Browse our products">🛒 आमच्या वस्तू पाहा</a>
-      <a class="btn btn-wa" href="https://wa.me/917507112727" target="_blank" rel="noopener" data-mr="💬 WhatsApp वर ऑर्डर" data-en="💬 Order on WhatsApp">💬 WhatsApp वर ऑर्डर</a>
-      <a class="btn btn-ghost" href="#visit" data-mr="📍 दुकानाचा पत्ता" data-en="📍 Find the shop">📍 दुकानाचा पत्ता</a>
+      <a class="btn btn-primary" href="#categories" data-mr="आमच्या वस्तू पाहा" data-en="Browse our products">आमच्या वस्तू पाहा</a>
+      <a class="btn btn-wa" href="https://wa.me/917507112727" target="_blank" rel="noopener" data-mr="WhatsApp वर ऑर्डर" data-en="Order on WhatsApp">WhatsApp वर ऑर्डर</a>
+      <a class="btn btn-ghost" href="#visit" data-mr="दुकानाचा पत्ता" data-en="Find the shop">दुकानाचा पत्ता</a>
     </div>
     <p class="estd" data-mr="कुटुंबाचा विश्वास · Your family grocer" data-en="Your family grocer · कुटुंबाचा विश्वास">कुटुंबाचा विश्वास · Your family grocer</p>
   </div>
@@ -184,9 +198,9 @@ footer .fine{margin-top:.8rem;font-size:.78rem;opacity:.5}
 
 <div class="wrap pillars">
   <div class="grid">
-    <div class="pill"><div class="ic">🤝</div><h3 class="mr" data-mr="विश्वास" data-en="Trust">विश्वास</h3><p data-mr="Trust earned over the years, one family at a time." data-en="Trust earned over the years, one family at a time.">Trust earned over the years, one family at a time.</p></div>
-    <div class="pill"><div class="ic">👨‍👩‍👧</div><h3 class="mr" data-mr="कुटुंब" data-en="Family">कुटुंब</h3><p data-mr="A family store that treats every customer like family." data-en="A family store that treats every customer like family.">A family store that treats every customer like family.</p></div>
-    <div class="pill"><div class="ic">⭐</div><h3 class="mr" data-mr="उत्तम दर्जा" data-en="Quality">उत्तम दर्जा</h3><p data-mr="Premium, quality-checked goods you can rely on." data-en="Premium, quality-checked goods you can rely on.">Premium, quality-checked goods you can rely on.</p></div>
+    <div class="pill"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 7.7-7 9-4-1.3-7-4.4-7-9V6z"/><path d="M9 12l2 2 4-4.5"/></svg></div><h3 class="mr" data-mr="विश्वास" data-en="Trust">विश्वास</h3><p data-mr="Trust earned over the years, one family at a time." data-en="Trust earned over the years, one family at a time.">Trust earned over the years, one family at a time.</p></div>
+    <div class="pill"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="7.5" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16.5 4.6a3.2 3.2 0 0 1 0 6.1"/><path d="M18 13.6a6 6 0 0 1 3 5.4"/></svg></div><h3 class="mr" data-mr="कुटुंब" data-en="Family">कुटुंब</h3><p data-mr="A family store that treats every customer like family." data-en="A family store that treats every customer like family.">A family store that treats every customer like family.</p></div>
+    <div class="pill"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M9 13.2L7.5 21l4.5-2.3L16.5 21 15 13.2"/></svg></div><h3 class="mr" data-mr="उत्तम दर्जा" data-en="Quality">उत्तम दर्जा</h3><p data-mr="Premium, quality-checked goods you can rely on." data-en="Premium, quality-checked goods you can rely on.">Premium, quality-checked goods you can rely on.</p></div>
   </div>
 </div>
 
@@ -198,14 +212,14 @@ footer .fine{margin-top:.8rem;font-size:.78rem;opacity:.5}
       <p data-mr="Everything your kitchen needs, under one trusted roof — from daily staples to festive essentials." data-en="Everything your kitchen needs, under one trusted roof — from daily staples to festive essentials.">Everything your kitchen needs, under one trusted roof — from daily staples to festive essentials.</p>
     </div>
     <div class="cats">
-      <a class="cat" href="shop.html#grains"><div class="ic">🌾</div><h3 class="mr" data-mr="धान्य, तांदूळ व पीठ" data-en="Grains, Rice & Atta">धान्य, तांदूळ व पीठ</h3><div class="en only-mr">Grains, Rice & Atta</div></a>
-      <a class="cat" href="shop.html#dals"><div class="ic">🫘</div><h3 class="mr" data-mr="डाळी व कडधान्ये" data-en="Dals & Pulses">डाळी व कडधान्ये</h3><div class="en only-mr">Dals & Pulses</div></a>
-      <a class="cat" href="shop.html#oils"><div class="ic">🫒</div><h3 class="mr" data-mr="तेल व तूप" data-en="Cooking Oils & Ghee">तेल व तूप</h3><div class="en only-mr">Cooking Oils & Ghee</div></a>
-      <a class="cat" href="shop.html#spices"><div class="ic">🌶️</div><h3 class="mr" data-mr="मसाले" data-en="Spices & Masalas">मसाले</h3><div class="en only-mr">Spices & Masalas</div></a>
-      <a class="cat" href="shop.html#snacks"><div class="ic">🍪</div><h3 class="mr" data-mr="नमकीन व फराळ" data-en="Snacks & Namkeen">नमकीन व फराळ</h3><div class="en only-mr">Snacks & Namkeen</div></a>
-      <a class="cat" href="shop.html#packaged"><div class="ic">📦</div><h3 class="mr" data-mr="पॅकबंद वस्तू" data-en="Packaged & Branded">पॅकबंद वस्तू</h3><div class="en only-mr">Packaged & Branded</div></a>
-      <a class="cat" href="shop.html#household"><div class="ic">🧴</div><h3 class="mr" data-mr="घरगुती व स्वच्छता" data-en="Household & Cleaning">घरगुती व स्वच्छता</h3><div class="en only-mr">Household & Cleaning</div></a>
-      <a class="cat" href="shop.html#daily"><div class="ic">🥛</div><h3 class="mr" data-mr="दूध व रोजच्या वस्तू" data-en="Dairy & Daily Needs">दूध व रोजच्या वस्तू</h3><div class="en only-mr">Dairy & Daily Needs</div></a>
+      <a class="cat" href="shop.html#grains"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22V10"/><path d="M12 10c-2.2 0-3.5-1.6-3.5-3.8C10.7 6.2 12 7.8 12 10z"/><path d="M12 10c2.2 0 3.5-1.6 3.5-3.8C13.3 6.2 12 7.8 12 10z"/><path d="M12 14c-2.2 0-3.5-1.6-3.5-3.8C10.7 10.2 12 11.8 12 14z"/><path d="M12 14c2.2 0 3.5-1.6 3.5-3.8C13.3 10.2 12 11.8 12 14z"/></svg></div><h3 class="mr" data-mr="धान्य, तांदूळ व पीठ" data-en="Grains, Rice & Atta">धान्य, तांदूळ व पीठ</h3><div class="en only-mr">Grains, Rice & Atta</div></a>
+      <a class="cat" href="shop.html#dals"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 10h18a9 9 0 0 1-18 0z"/><path d="M8 7c0-1 1-1.5 1-2.5M12 7c0-1 1-1.5 1-2.5M16 7c0-1 1-1.5 1-2.5"/></svg></div><h3 class="mr" data-mr="डाळी व कडधान्ये" data-en="Dals & Pulses">डाळी व कडधान्ये</h3><div class="en only-mr">Dals & Pulses</div></a>
+      <a class="cat" href="shop.html#oils"><div class="ic"><svg viewBox="0 0 24 24"><path d="M10 2h4v3l1.5 2.5V20a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V7.5L10 5z"/><path d="M8.5 12h7"/></svg></div><h3 class="mr" data-mr="तेल व तूप" data-en="Cooking Oils & Ghee">तेल व तूप</h3><div class="en only-mr">Cooking Oils & Ghee</div></a>
+      <a class="cat" href="shop.html#spices"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8 8h8l-.8 12a1 1 0 0 1-1 1H9.8a1 1 0 0 1-1-1z"/><path d="M8 8V6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M10.5 3.5h3"/></svg></div><h3 class="mr" data-mr="मसाले" data-en="Spices & Masalas">मसाले</h3><div class="en only-mr">Spices & Masalas</div></a>
+      <a class="cat" href="shop.html#snacks"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="10" r=".9"/><circle cx="14" cy="9.5" r=".9"/><circle cx="13.5" cy="14" r=".9"/><circle cx="9.5" cy="14.5" r=".9"/></svg></div><h3 class="mr" data-mr="नमकीन व फराळ" data-en="Snacks & Namkeen">नमकीन व फराळ</h3><div class="en only-mr">Snacks & Namkeen</div></a>
+      <a class="cat" href="shop.html#packaged"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v10l-8 4-8-4V7z"/><path d="M4 7l8 4 8-4"/><path d="M12 11v10"/></svg></div><h3 class="mr" data-mr="पॅकबंद वस्तू" data-en="Packaged & Branded">पॅकबंद वस्तू</h3><div class="en only-mr">Packaged & Branded</div></a>
+      <a class="cat" href="shop.html#household"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 9h5v11a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1z"/><path d="M9 9V6h3V4h-2"/><path d="M14 6h2.5l1.2 2.2"/></svg></div><h3 class="mr" data-mr="घरगुती व स्वच्छता" data-en="Household & Cleaning">घरगुती व स्वच्छता</h3><div class="en only-mr">Household & Cleaning</div></a>
+      <a class="cat" href="shop.html#daily"><div class="ic"><svg viewBox="0 0 24 24"><path d="M7 9l1.2-5h7.6L17 9v10a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"/><path d="M7 9h10"/><path d="M12 4v5"/></svg></div><h3 class="mr" data-mr="दूध व रोजच्या वस्तू" data-en="Dairy & Daily Needs">दूध व रोजच्या वस्तू</h3><div class="en only-mr">Dairy & Daily Needs</div></a>
     </div>
     <div class="cats-cta">
       <a class="btn btn-solid" href="shop.html" data-mr="संपूर्ण यादी पाहा · View full catalogue →" data-en="View full catalogue →">संपूर्ण यादी पाहा · View full catalogue →</a>
@@ -248,20 +262,48 @@ footer .fine{margin-top:.8rem;font-size:.78rem;opacity:.5}
         <h3 class="mr" data-mr="पत्ता व संपर्क" data-en="Address & Contact">पत्ता व संपर्क</h3>
         <p class="sub">Address & Contact</p>
         <p class="addr mr" data-mr="राम प्रोव्हिजन<br>रथी नगर जवळ, शिवाजी नगर<br>अमरावती, महाराष्ट्र" data-en="Ram Provision<br>Near Rathi Nagar, Shivaji Nagar<br>Amravati, Maharashtra">राम प्रोव्हिजन<br>रथी नगर जवळ, शिवाजी नगर<br>अमरावती, महाराष्ट्र</p>
-        <p class="addr" style="margin-top:.6rem">📞 <a href="tel:+917507112727">+91 75071 12727</a><br>📞 <a href="tel:+919284176664">+91 92841 76664</a></p>
-        <a class="btn btn-wa" href="https://maps.google.com/?q=Ram+Provision+Rathi+Nagar+Shivaji+Nagar+Amravati" target="_blank" rel="noopener" data-mr="📍 Google Maps वर मार्ग" data-en="📍 Directions on Google Maps">📍 Google Maps वर मार्ग</a>
+        <p class="addr" style="margin-top:.6rem"><a href="tel:+917507112727">+91 75071 12727</a><br><a href="tel:+919284176664">+91 92841 76664</a></p>
+        <a class="btn btn-wa" href="https://maps.google.com/?q=Ram+Provision+Rathi+Nagar+Shivaji+Nagar+Amravati" target="_blank" rel="noopener" data-mr="Google Maps वर मार्ग" data-en="Directions on Google Maps">Google Maps वर मार्ग</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="ordering" class="ordering">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eye" data-mr="अशी ऑर्डर करा · How ordering works" data-en="How ordering works">अशी ऑर्डर करा · How ordering works</p>
+      <h2 class="mr" data-mr="स्टॉक तपासा · राखून ठेवा · घेऊन जा" data-en="Check · Reserve · Collect">स्टॉक तपासा · राखून ठेवा · घेऊन जा</h2>
+      <p data-mr="सोपी पद्धत — WhatsApp वर यादी पाठवा, आम्ही स्टॉक तपासून वस्तू राखून ठेवतो, आणि तुम्ही दुकानातून घेऊन जा." data-en="Simple — send your list, we check stock and set it aside, and you collect it from the shop.">सोपी पद्धत — WhatsApp वर यादी पाठवा, आम्ही स्टॉक तपासून वस्तू राखून ठेवतो, आणि तुम्ही दुकानातून घेऊन जा.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">1</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg></div>
+        <h3 class="mr" data-mr="स्टॉक तपासा" data-en="Check stock">स्टॉक तपासा</h3>
+        <p data-mr="WhatsApp वर किंवा फोनवर तुमची यादी पाठवा — कोणत्या वस्तू उपलब्ध आहेत ते आम्ही लगेच कळवतो." data-en="Send your list on WhatsApp or by phone — we confirm what's in stock right away.">WhatsApp वर किंवा फोनवर तुमची यादी पाठवा — कोणत्या वस्तू उपलब्ध आहेत ते आम्ही लगेच कळवतो.</p>
+      </div>
+      <div class="step"><span class="num">2</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"/><path d="M9 8a3 3 0 0 1 6 0"/><path d="M9.5 13l1.7 1.7L15 11"/></svg></div>
+        <h3 class="mr" data-mr="राखून ठेवतो" data-en="We reserve it">राखून ठेवतो</h3>
+        <p data-mr="तुमची ऑर्डर आम्ही बाजूला काढून तयार ठेवतो — तुम्ही याल तेव्हा वाट पाहावी लागणार नाही." data-en="We set your order aside and keep it ready — no waiting when you arrive.">तुमची ऑर्डर आम्ही बाजूला काढून तयार ठेवतो — तुम्ही याल तेव्हा वाट पाहावी लागणार नाही.</p>
+      </div>
+      <div class="step"><span class="num">3</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 9l1-4h14l1 4"/><path d="M4 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></div>
+        <h3 class="mr" data-mr="घेऊन जा" data-en="Pick up">घेऊन जा</h3>
+        <p data-mr="दुकानातून सोयीने घेऊन जा. घरपोच सेवा फक्त रथी नगर परिसरात उपलब्ध." data-en="Collect from the shop at your convenience. Home delivery is available within Rathi Nagar only.">दुकानातून सोयीने घेऊन जा. घरपोच सेवा फक्त रथी नगर परिसरात उपलब्ध.</p>
+      </div>
+    </div>
+    <p class="svc-note" data-mr="कृपया लक्षात घ्या: सध्या फक्त <span class='em'>दुकानातून पिकअप</span> — आणि घरपोच सेवा <span class='em'>फक्त रथी नगरमध्ये</span>. इतर भागांत डिलिव्हरी उपलब्ध नाही." data-en="Please note: currently <span class='em'>pickup from the shop only</span> — and home delivery <span class='em'>within Rathi Nagar only</span>. Delivery to other areas is not available.">कृपया लक्षात घ्या: सध्या फक्त <span class="em">दुकानातून पिकअप</span> — आणि घरपोच सेवा <span class="em">फक्त रथी नगरमध्ये</span>. इतर भागांत डिलिव्हरी उपलब्ध नाही.</p>
   </div>
 </section>
 
 <section id="contact" class="contact">
   <div class="wrap">
     <h2 class="mr" data-mr="आजच ऑर्डर करा" data-en="Order today">आजच ऑर्डर करा</h2>
-    <p data-mr="तुमची किराणा यादी WhatsApp वर पाठवा किंवा फोन करा — आम्ही तयार ठेवू.<br>Send your list on WhatsApp or call — we'll keep it ready." data-en="Send your grocery list on WhatsApp or call — we'll keep it ready.">तुमची किराणा यादी WhatsApp वर पाठवा किंवा फोन करा — आम्ही तयार ठेवू.<br>Send your list on WhatsApp or call — we'll keep it ready.</p>
+    <p data-mr="तुमची किराणा यादी WhatsApp वर पाठवा किंवा फोन करा — आम्ही स्टॉक तपासून तयार ठेवू.<br>पिकअप दुकानातून · घरपोच फक्त रथी नगरमध्ये." data-en="Send your grocery list on WhatsApp or call — we'll check stock and keep it ready. Pickup from the shop · home delivery within Rathi Nagar only.">तुमची किराणा यादी WhatsApp वर पाठवा किंवा फोन करा — आम्ही स्टॉक तपासून तयार ठेवू.<br>पिकअप दुकानातून · घरपोच फक्त रथी नगरमध्ये.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="tel:+917507112727" data-mr="📞 फोन करा" data-en="📞 Call us">📞 फोन करा</a>
-      <a class="btn btn-wa" href="https://wa.me/917507112727" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a class="btn btn-primary" href="tel:+917507112727" data-mr="फोन करा" data-en="Call us">फोन करा</a>
+      <a class="btn btn-wa" href="https://wa.me/917507112727" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
 </section>
@@ -273,7 +315,7 @@ footer .fine{margin-top:.8rem;font-size:.78rem;opacity:.5}
       <b class="mr" data-mr="राम प्रोव्हिजन · Ram Provision" data-en="Ram Provision · राम प्रोव्हिजन">राम प्रोव्हिजन · Ram Provision</b>
     </div>
     <p data-mr="रथी नगर, शिवाजी नगर, अमरावती, महाराष्ट्र · Proprietor: Dinesh Babanrao Bonde" data-en="Near Rathi Nagar, Shivaji Nagar, Amravati, Maharashtra · Proprietor: Dinesh Babanrao Bonde">रथी नगर, शिवाजी नगर, अमरावती, महाराष्ट्र · Proprietor: Dinesh Babanrao Bonde</p>
-    <p>📞 +91 75071 12727 · +91 92841 76664</p>
+    <p>+91 75071 12727 · +91 92841 76664</p>
     <p class="fine">© Ram Provision. विश्वासाची परंपरा. · Website crafted with care.</p>
   </div>
 </footer>

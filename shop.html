@@ -31,7 +31,6 @@ a{color:inherit;text-decoration:none}
 .btn-back{background:#fff;color:var(--red);border-color:rgba(198,40,40,.2)}
 .lang-btn{background:#fff;border:1.5px solid var(--red);color:var(--red);border-radius:999px;padding:.45rem .9rem;font:inherit;font-weight:600;font-size:.85rem;cursor:pointer}
 .lang-btn:hover{background:var(--cream-2)}
-.lang-btn::before{content:"🌐 ";}
 
 header{position:sticky;top:0;z-index:50;background:rgba(255,248,240,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(198,40,40,.12)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;gap:.7rem}
@@ -58,7 +57,8 @@ body.lang-en .top h1{font-family:'Fraunces',serif}
 
 .cat-sec{padding:2.6rem 0 1rem}
 .cat-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem;border-bottom:2px solid var(--cream-2);padding-bottom:.9rem}
-.cat-head .ic{font-size:2.2rem;background:var(--cream-2);width:62px;height:62px;border-radius:16px;display:grid;place-items:center;flex:0 0 auto}
+.cat-head .ic{background:var(--cream-2);width:62px;height:62px;border-radius:16px;display:grid;place-items:center;flex:0 0 auto}
+.cat-head .ic svg{width:32px;height:32px;stroke:var(--red);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .cat-head h2{font-family:'Tiro Devanagari Marathi',serif;font-size:clamp(1.5rem,4vw,2rem);color:var(--red);line-height:1.1}
 body.lang-en .cat-head h2{font-family:'Fraunces',serif}
 .cat-head .en{font-size:.9rem;color:var(--muted);letter-spacing:1px}
@@ -114,21 +114,21 @@ footer a{color:var(--saffron)}
 
 <div class="chips">
   <div class="wrap row">
-    <a class="chip mr" href="#grains" data-mr="🌾 धान्य" data-en="🌾 Grains">🌾 धान्य</a>
-    <a class="chip mr" href="#dals" data-mr="🫘 डाळी" data-en="🫘 Dals">🫘 डाळी</a>
-    <a class="chip mr" href="#oils" data-mr="🫒 तेल-तूप" data-en="🫒 Oils">🫒 तेल-तूप</a>
-    <a class="chip mr" href="#spices" data-mr="🌶️ मसाले" data-en="🌶️ Spices">🌶️ मसाले</a>
-    <a class="chip mr" href="#snacks" data-mr="🍪 नमकीन" data-en="🍪 Snacks">🍪 नमकीन</a>
-    <a class="chip mr" href="#packaged" data-mr="📦 पॅकबंद" data-en="📦 Packaged">📦 पॅकबंद</a>
-    <a class="chip mr" href="#household" data-mr="🧴 घरगुती" data-en="🧴 Household">🧴 घरगुती</a>
-    <a class="chip mr" href="#daily" data-mr="🥛 रोजच्या वस्तू" data-en="🥛 Daily">🥛 रोजच्या वस्तू</a>
+    <a class="chip mr" href="#grains" data-mr="धान्य" data-en="Grains">धान्य</a>
+    <a class="chip mr" href="#dals" data-mr="डाळी" data-en="Dals">डाळी</a>
+    <a class="chip mr" href="#oils" data-mr="तेल-तूप" data-en="Oils">तेल-तूप</a>
+    <a class="chip mr" href="#spices" data-mr="मसाले" data-en="Spices">मसाले</a>
+    <a class="chip mr" href="#snacks" data-mr="नमकीन" data-en="Snacks">नमकीन</a>
+    <a class="chip mr" href="#packaged" data-mr="पॅकबंद" data-en="Packaged">पॅकबंद</a>
+    <a class="chip mr" href="#household" data-mr="घरगुती" data-en="Household">घरगुती</a>
+    <a class="chip mr" href="#daily" data-mr="रोजच्या वस्तू" data-en="Daily">रोजच्या वस्तू</a>
   </div>
 </div>
 
 <div class="wrap">
 
   <section class="cat-sec" id="grains">
-    <div class="cat-head"><div class="ic">🌾</div><div><h2 class="mr" data-mr="धान्य, तांदूळ व पीठ" data-en="Grains, Rice & Atta">धान्य, तांदूळ व पीठ</h2><div class="en only-mr">Grains, Rice & Atta</div></div></div>
+    <div class="cat-head"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22V10"/><path d="M12 10c-2.2 0-3.5-1.6-3.5-3.8C10.7 6.2 12 7.8 12 10z"/><path d="M12 10c2.2 0 3.5-1.6 3.5-3.8C13.3 6.2 12 7.8 12 10z"/><path d="M12 14c-2.2 0-3.5-1.6-3.5-3.8C10.7 10.2 12 11.8 12 14z"/><path d="M12 14c2.2 0 3.5-1.6 3.5-3.8C13.3 10.2 12 11.8 12 14z"/></svg></div><div><h2 class="mr" data-mr="धान्य, तांदूळ व पीठ" data-en="Grains, Rice & Atta">धान्य, तांदूळ व पीठ</h2><div class="en only-mr">Grains, Rice & Atta</div></div></div>
     <div class="items">
       <div class="item"><div class="txt"><div class="n" data-mr="बासमती तांदूळ" data-en="Basmati Rice">बासमती तांदूळ</div><div class="e only-mr">Basmati Rice</div></div><button class="add" data-key="basmati-rice" data-name-mr="बासमती तांदूळ" data-name-en="Basmati Rice"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
       <div class="item"><div class="txt"><div class="n" data-mr="कोलम तांदूळ" data-en="Kolam Rice">कोलम तांदूळ</div><div class="e only-mr">Kolam Rice</div></div><button class="add" data-key="kolam-rice" data-name-mr="कोलम तांदूळ" data-name-en="Kolam Rice"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
@@ -142,7 +142,7 @@ footer a{color:var(--saffron)}
   </section>
 
   <section class="cat-sec" id="dals">
-    <div class="cat-head"><div class="ic">🫘</div><div><h2 class="mr" data-mr="डाळी व कडधान्ये" data-en="Dals & Pulses">डाळी व कडधान्ये</h2><div class="en only-mr">Dals & Pulses</div></div></div>
+    <div class="cat-head"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 10h18a9 9 0 0 1-18 0z"/><path d="M8 7c0-1 1-1.5 1-2.5M12 7c0-1 1-1.5 1-2.5M16 7c0-1 1-1.5 1-2.5"/></svg></div><div><h2 class="mr" data-mr="डाळी व कडधान्ये" data-en="Dals & Pulses">डाळी व कडधान्ये</h2><div class="en only-mr">Dals & Pulses</div></div></div>
     <div class="items">
       <div class="item"><div class="txt"><div class="n" data-mr="तूर डाळ" data-en="Toor Dal">तूर डाळ</div><div class="e only-mr">Toor Dal</div></div><button class="add" data-key="toor-dal" data-name-mr="तूर डाळ" data-name-en="Toor Dal"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
       <div class="item"><div class="txt"><div class="n" data-mr="मूग डाळ" data-en="Moong Dal">मूग डाळ</div><div class="e only-mr">Moong Dal</div></div><button class="add" data-key="moong-dal" data-name-mr="मूग डाळ" data-name-en="Moong Dal"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
@@ -156,7 +156,7 @@ footer a{color:var(--saffron)}
   </section>
 
   <section class="cat-sec" id="oils">
-    <div class="cat-head"><div class="ic">🫒</div><div><h2 class="mr" data-mr="तेल व तूप" data-en="Cooking Oils & Ghee">तेल व तूप</h2><div class="en only-mr">Cooking Oils & Ghee</div></div></div>
+    <div class="cat-head"><div class="ic"><svg viewBox="0 0 24 24"><path d="M10 2h4v3l1.5 2.5V20a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V7.5L10 5z"/><path d="M8.5 12h7"/></svg></div><div><h2 class="mr" data-mr="तेल व तूप" data-en="Cooking Oils & Ghee">तेल व तूप</h2><div class="en only-mr">Cooking Oils & Ghee</div></div></div>
     <div class="items">
       <div class="item"><div class="txt"><div class="n" data-mr="शेंगदाणा तेल" data-en="Groundnut Oil">शेंगदाणा तेल</div><div class="e only-mr">Groundnut Oil</div></div><button class="add" data-key="groundnut-oil" data-name-mr="शेंगदाणा तेल" data-name-en="Groundnut Oil"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
       <div class="item"><div class="txt"><div class="n" data-mr="सूर्यफूल तेल" data-en="Sunflower Oil">सूर्यफूल तेल</div><div class="e only-mr">Sunflower Oil</div></div><button class="add" data-key="sunflower-oil" data-name-mr="सूर्यफूल तेल" data-name-en="Sunflower Oil"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
@@ -168,7 +168,7 @@ footer a{color:var(--saffron)}
   </section>
 
   <section class="cat-sec" id="spices">
-    <div class="cat-head"><div class="ic">🌶️</div><div><h2 class="mr" data-mr="मसाले" data-en="Spices & Masalas">मसाले</h2><div class="en only-mr">Spices & Masalas</div></div></div>
+    <div class="cat-head"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8 8h8l-.8 12a1 1 0 0 1-1 1H9.8a1 1 0 0 1-1-1z"/><path d="M8 8V6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M10.5 3.5h3"/></svg></div><div><h2 class="mr" data-mr="मसाले" data-en="Spices & Masalas">मसाले</h2><div class="en only-mr">Spices & Masalas</div></div></div>
     <div class="items">
       <div class="item"><div class="txt"><div class="n" data-mr="हळद" data-en="Turmeric">हळद</div><div class="e only-mr">Turmeric</div></div><button class="add" data-key="turmeric" data-name-mr="हळद" data-name-en="Turmeric"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
       <div class="item"><div class="txt"><div class="n" data-mr="लाल तिखट" data-en="Red Chilli Powder">लाल तिखट</div><div class="e only-mr">Red Chilli Powder</div></div><button class="add" data-key="chilli-powder" data-name-mr="लाल तिखट" data-name-en="Red Chilli Powder"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
@@ -182,7 +182,7 @@ footer a{color:var(--saffron)}
   </section>
 
   <section class="cat-sec" id="snacks">
-    <div class="cat-head"><div class="ic">🍪</div><div><h2 class="mr" data-mr="नमकीन व फराळ" data-en="Snacks & Namkeen">नमकीन व फराळ</h2><div class="en only-mr">Snacks & Namkeen</div></div></div>
+    <div class="cat-head"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="10" r=".9"/><circle cx="14" cy="9.5" r=".9"/><circle cx="13.5" cy="14" r=".9"/><circle cx="9.5" cy="14.5" r=".9"/></svg></div><div><h2 class="mr" data-mr="नमकीन व फराळ" data-en="Snacks & Namkeen">नमकीन व फराळ</h2><div class="en only-mr">Snacks & Namkeen</div></div></div>
     <div class="items">
       <div class="item"><div class="txt"><div class="n" data-mr="शेव व चिवडा" data-en="Sev & Chivda">शेव व चिवडा</div><div class="e only-mr">Sev & Chivda</div></div><button class="add" data-key="sev-chivda" data-name-mr="शेव व चिवडा" data-name-en="Sev & Chivda"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
       <div class="item"><div class="txt"><div class="n" data-mr="फरसाण" data-en="Farsan">फरसाण</div><div class="e only-mr">Farsan</div></div><button class="add" data-key="farsan" data-name-mr="फरसाण" data-name-en="Farsan"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
@@ -196,7 +196,7 @@ footer a{color:var(--saffron)}
   </section>
 
   <section class="cat-sec" id="packaged">
-    <div class="cat-head"><div class="ic">📦</div><div><h2 class="mr" data-mr="पॅकबंद वस्तू" data-en="Packaged & Branded Goods">पॅकबंद वस्तू</h2><div class="en only-mr">Packaged & Branded Goods</div></div></div>
+    <div class="cat-head"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v10l-8 4-8-4V7z"/><path d="M4 7l8 4 8-4"/><path d="M12 11v10"/></svg></div><div><h2 class="mr" data-mr="पॅकबंद वस्तू" data-en="Packaged & Branded Goods">पॅकबंद वस्तू</h2><div class="en only-mr">Packaged & Branded Goods</div></div></div>
     <div class="items">
       <div class="item"><div class="txt"><div class="n" data-mr="नूडल्स" data-en="Noodles">नूडल्स</div><div class="e only-mr">Noodles</div></div><button class="add" data-key="noodles" data-name-mr="नूडल्स" data-name-en="Noodles"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
       <div class="item"><div class="txt"><div class="n" data-mr="सॉस व केचप" data-en="Sauces & Ketchup">सॉस व केचप</div><div class="e only-mr">Sauces & Ketchup</div></div><button class="add" data-key="sauces" data-name-mr="सॉस व केचप" data-name-en="Sauces & Ketchup"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
@@ -208,7 +208,7 @@ footer a{color:var(--saffron)}
   </section>
 
   <section class="cat-sec" id="household">
-    <div class="cat-head"><div class="ic">🧴</div><div><h2 class="mr" data-mr="घरगुती व स्वच्छता" data-en="Household & Cleaning">घरगुती व स्वच्छता</h2><div class="en only-mr">Household & Cleaning</div></div></div>
+    <div class="cat-head"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 9h5v11a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1z"/><path d="M9 9V6h3V4h-2"/><path d="M14 6h2.5l1.2 2.2"/></svg></div><div><h2 class="mr" data-mr="घरगुती व स्वच्छता" data-en="Household & Cleaning">घरगुती व स्वच्छता</h2><div class="en only-mr">Household & Cleaning</div></div></div>
     <div class="items">
       <div class="item"><div class="txt"><div class="n" data-mr="अंघोळीचा साबण" data-en="Bath Soap">अंघोळीचा साबण</div><div class="e only-mr">Bath Soap</div></div><button class="add" data-key="bath-soap" data-name-mr="अंघोळीचा साबण" data-name-en="Bath Soap"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
       <div class="item"><div class="txt"><div class="n" data-mr="वॉशिंग पावडर" data-en="Detergent">वॉशिंग पावडर</div><div class="e only-mr">Detergent</div></div><button class="add" data-key="detergent" data-name-mr="वॉशिंग पावडर" data-name-en="Detergent"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
@@ -220,7 +220,7 @@ footer a{color:var(--saffron)}
   </section>
 
   <section class="cat-sec" id="daily">
-    <div class="cat-head"><div class="ic">🥛</div><div><h2 class="mr" data-mr="दूध व रोजच्या वस्तू" data-en="Dairy & Daily Needs">दूध व रोजच्या वस्तू</h2><div class="en only-mr">Dairy & Daily Needs</div></div></div>
+    <div class="cat-head"><div class="ic"><svg viewBox="0 0 24 24"><path d="M7 9l1.2-5h7.6L17 9v10a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"/><path d="M7 9h10"/><path d="M12 4v5"/></svg></div><div><h2 class="mr" data-mr="दूध व रोजच्या वस्तू" data-en="Dairy & Daily Needs">दूध व रोजच्या वस्तू</h2><div class="en only-mr">Dairy & Daily Needs</div></div></div>
     <div class="items">
       <div class="item"><div class="txt"><div class="n" data-mr="दूध" data-en="Milk">दूध</div><div class="e only-mr">Milk</div></div><button class="add" data-key="milk" data-name-mr="दूध" data-name-en="Milk"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
       <div class="item"><div class="txt"><div class="n" data-mr="दही व ताक" data-en="Curd & Buttermilk">दही व ताक</div><div class="e only-mr">Curd & Buttermilk</div></div><button class="add" data-key="curd" data-name-mr="दही व ताक" data-name-en="Curd & Buttermilk"><span data-mr="+ टाका" data-en="+ Add">+ टाका</span></button></div>
@@ -231,18 +231,19 @@ footer a{color:var(--saffron)}
     </div>
   </section>
 
-  <p class="note" data-mr="📝 ही प्रातिनिधिक यादी आहे — दुकानात आणखी बरेच ब्रँड व वस्तू उपलब्ध आहेत. हवी ती वस्तू WhatsApp वर विचारा!" data-en="📝 This is a sample range — many more brands & items in store. Ask us on WhatsApp for anything specific.">📝 ही प्रातिनिधिक यादी आहे — दुकानात आणखी बरेच ब्रँड व वस्तू उपलब्ध आहेत. हवी ती वस्तू WhatsApp वर विचारा!</p>
+  <p class="note" data-mr="ही प्रातिनिधिक यादी आहे — दुकानात आणखी बरेच ब्रँड व वस्तू उपलब्ध आहेत. हवी ती वस्तू WhatsApp वर विचारा!" data-en="This is a sample range — many more brands & items in store. Ask us on WhatsApp for anything specific.">ही प्रातिनिधिक यादी आहे — दुकानात आणखी बरेच ब्रँड व वस्तू उपलब्ध आहेत. हवी ती वस्तू WhatsApp वर विचारा!</p>
 
 </div>
 
 <section class="order">
   <div class="wrap">
     <h2 class="mr" data-mr="तुमची यादी पाठवा" data-en="Send us your list">तुमची यादी पाठवा</h2>
-    <p data-mr="बास्केटमध्ये वस्तू टाका आणि ऑर्डर करा — किंवा थेट WhatsApp / फोन करा." data-en="Add items to your basket and place an order — or message / call us directly.">बास्केटमध्ये वस्तू टाका आणि ऑर्डर करा — किंवा थेट WhatsApp / फोन करा.</p>
+    <p data-mr="बास्केटमध्ये वस्तू टाका आणि ऑर्डर करा — किंवा थेट WhatsApp / फोन करा. आम्ही स्टॉक तपासून वस्तू राखून ठेवतो." data-en="Add items to your basket and place an order — or message / call us directly. We check stock and set your order aside.">बास्केटमध्ये वस्तू टाका आणि ऑर्डर करा — किंवा थेट WhatsApp / फोन करा. आम्ही स्टॉक तपासून वस्तू राखून ठेवतो.</p>
+    <p style="opacity:.95;margin-bottom:1.5rem;font-weight:600" data-mr="पिकअप दुकानातून · घरपोच सेवा फक्त रथी नगरमध्ये" data-en="Pickup from the shop · home delivery within Rathi Nagar only">पिकअप दुकानातून · घरपोच सेवा फक्त रथी नगरमध्ये</p>
     <div class="cta">
-      <button class="btn btn-light" onclick="rpOpenCart()" data-mr="🛒 बास्केट पाहा" data-en="🛒 View basket">🛒 बास्केट पाहा</button>
-      <a class="btn btn-light" href="tel:+917507112727">📞 +91 75071 12727</a>
-      <a class="btn btn-wa" href="https://wa.me/917507112727" target="_blank" rel="noopener" data-mr="💬 WhatsApp वर ऑर्डर" data-en="💬 Order on WhatsApp">💬 WhatsApp वर ऑर्डर</a>
+      <button class="btn btn-light" onclick="rpOpenCart()" data-mr="बास्केट पाहा" data-en="View basket">बास्केट पाहा</button>
+      <a class="btn btn-light" href="tel:+917507112727">+91 75071 12727</a>
+      <a class="btn btn-wa" href="https://wa.me/917507112727" target="_blank" rel="noopener" data-mr="WhatsApp वर ऑर्डर" data-en="Order on WhatsApp">WhatsApp वर ऑर्डर</a>
     </div>
   </div>
 </section>
@@ -251,7 +252,7 @@ footer a{color:var(--saffron)}
   <div class="wrap">
     <div class="fbrand"><img src="assets/logo.svg" alt=""><b class="mr" data-mr="राम प्रोव्हिजन · Ram Provision" data-en="Ram Provision · राम प्रोव्हिजन">राम प्रोव्हिजन · Ram Provision</b></div>
     <p data-mr="रथी नगर, शिवाजी नगर, अमरावती · Proprietor: Dinesh Babanrao Bonde" data-en="Near Rathi Nagar, Shivaji Nagar, Amravati · Proprietor: Dinesh Babanrao Bonde">रथी नगर, शिवाजी नगर, अमरावती · Proprietor: Dinesh Babanrao Bonde</p>
-    <p>📞 +91 75071 12727 · +91 92841 76664</p>
+    <p>+91 75071 12727 · +91 92841 76664</p>
   </div>
 </footer>
 

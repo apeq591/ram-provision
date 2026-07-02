@@ -46,8 +46,9 @@ body{font-family:'Mukta',system-ui,sans-serif;background:#efe2d2;color:var(--ink
 .back .who .name{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;color:var(--ink);line-height:1.1;margin-top:.1rem}
 .back .who .name-mr{font-size:.85rem;color:var(--muted)}
 .back .lines{font-size:.84rem;line-height:1.55;color:var(--ink)}
-.back .lines .l{display:flex;gap:.45rem;align-items:flex-start;margin-top:.25rem}
-.back .lines .l b{color:var(--red)}
+.back .lines .l{display:flex;gap:.5rem;align-items:flex-start;margin-top:.25rem}
+.back .lines .l b{color:var(--red);flex:0 0 auto;display:inline-flex;line-height:1}
+.back .lines .l b svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
 .back .qr{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;flex:0 0 auto}
 .back .qr img{width:96px;height:96px;border-radius:8px;border:3px solid #fff;box-shadow:0 6px 16px -8px rgba(0,0,0,.4)}
 .back .qr span{font-size:.62rem;letter-spacing:1px;color:var(--muted);text-transform:uppercase;text-align:center}
@@ -99,10 +100,10 @@ body{font-family:'Mukta',system-ui,sans-serif;background:#efe2d2;color:var(--ink
         <div class="name-mr mr">दिनेश बाबनराव बोंडे</div>
       </div>
       <div class="lines">
-        <div class="l"><b>📞</b><span>+91 75071 12727<br>+91 92841 76664</span></div>
-        <div class="l"><b>💬</b><span>WhatsApp ऑर्डर उपलब्ध</span></div>
-        <div class="l"><b>📍</b><span class="mr">रथी नगर जवळ, शिवाजी नगर,<br>अमरावती, महाराष्ट्र</span></div>
-        <div class="l"><b>🕘</b><span>9:00–1:30 · 5:00–10:00</span></div>
+        <div class="l"><b><svg viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg></b><span>+91 75071 12727<br>+91 92841 76664</span></div>
+        <div class="l"><b><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3v-3H4z"/></svg></b><span>WhatsApp ऑर्डर उपलब्ध</span></div>
+        <div class="l"><b><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></b><span class="mr">रथी नगर जवळ, शिवाजी नगर,<br>अमरावती, महाराष्ट्र</span></div>
+        <div class="l"><b><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></b><span>9:00–1:30 · 5:00–10:00</span></div>
       </div>
       <div class="brandline mr">किराणा · Grocery</div>
     </div>
@@ -115,9 +116,9 @@ body{font-family:'Mukta',system-ui,sans-serif;background:#efe2d2;color:var(--ink
 </div>
 
 <div class="actions">
-  <a class="btn btn-solid" href="index.html">🏠 वेबसाइट</a>
-  <a class="btn btn-wa" href="https://wa.me/917507112727" target="_blank" rel="noopener">💬 WhatsApp</a>
-  <button class="btn btn-ghost" onclick="window.print()">🖨️ प्रिंट / Print Card</button>
+  <a class="btn btn-solid" href="index.html">वेबसाइट</a>
+  <a class="btn btn-wa" href="https://wa.me/917507112727" target="_blank" rel="noopener">WhatsApp</a>
+  <button class="btn btn-ghost" onclick="window.print()">प्रिंट / Print Card</button>
 </div>
 <p class="hint">कार्ड तयार आहे — प्रिंट करा किंवा डिजिटल शेअर करा. Ready to print or share digitally.</p>
 
